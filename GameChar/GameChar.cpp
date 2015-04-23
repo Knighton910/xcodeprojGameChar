@@ -38,14 +38,17 @@ GameChar& GameChar::operator=(const GameChar& source)
 {
     cout << " * 3 Overloaded assignment operator= called from " << source.name  << endl;
     
-    // check for self assignment, to prevent gc1=gc1
-    if (this == &source)
-        return *this;
-    this->name = source.name;
-    this->capacity = source.capacity;
-    this->used = source.used;
-    copy(source.pToolHolder, source.pToolHolder+this->used, this->pToolHolder);
-    
+    // check for self assignment, to prevent gc1=gc1, it will return *this;
+    if (this != &source)  {
+        this->name = source.name;
+        this->capacity = source.capacity;
+        this->used = source.used;
+        //copy(source.pToolHolder, source.pToolHolder+this->used, this->pToolHolder);
+        // Do the copy yourself instead of using the copy in the template library
+        for(int i=0; i < this->used; ++i)  {
+            pToolHolder[i] = source.pToolHolder[i];
+        }
+    }    
     return *this;
 }
 
