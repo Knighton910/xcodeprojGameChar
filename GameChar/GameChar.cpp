@@ -30,7 +30,11 @@ GameChar::GameChar(const GameChar& source)
     this->capacity = source.capacity;
     this->used = source.used;
     this->pToolHolder = new string[source.capacity];
-    copy(source.pToolHolder, source.pToolHolder + this->used, pToolHolder);  // copy template library
+    //copy(source.pToolHolder, source.pToolHolder + this->used, pToolHolder);  // copy template library
+    // do my own copy instead of using the copy in the library template.
+    for(int i=0; i < this->used; ++i)  {
+        pToolHolder[i] = source.pToolHolder[i];
+    }
 }
 
 //overloaded assignment operator
