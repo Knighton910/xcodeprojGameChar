@@ -1,1 +1,1 @@
-# gamechar
+# xcodeprojGameChar
